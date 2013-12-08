@@ -25,13 +25,13 @@ In this document, the key words "MUST", "MUST NOT", "REQUIRED",
 "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY",
 and "OPTIONAL" are to be interpreted as described in [](#RFC2119).
 
-The comes with increased parent child communination when a child
-zones transitions to a new denial of extensne hash.
-
 # Implementing Denial Type Support in DS Records
 
 This document specifies that the denial type codes TBD, TBD, ..., TBD 
 have been assigned for use within DS records. 
+
+Zone operators should be aware that changes to their zones' denial of existence method
+require uploading a new DS record with the new Denial Type to their parent.
 
 # DS Record Field Values
 
@@ -47,11 +47,11 @@ Digest:
     formula ("|" denotes concatenation, HASH denotes that 
     hash algorithm in use).
 
-            digest = denial type | HASH(DNSKEY owner name | DNSKEY RDATA)
+        digest = denial type | HASH(DNSKEY owner name | DNSKEY RDATA)
 
     where DNSKEY RDATA is defined by [](#RFC4034) as:
 
-            DNSKEY RDATA = Flags | Protocol | Algorithm | Public Key
+        DNSKEY RDATA = Flags | Protocol | Algorithm | Public Key
 
    The Key Tag field and Algorithm fields remain unchanged by this
    document and are specified in the [](#RFC4034) specification.
@@ -70,9 +70,7 @@ as follows:
      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+          Digest               /
      /                                                               /
      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-|
-
-The length of the digest is specified in the respective RFCs defining the
-digest type.
+^[fig:wire::The on-the-wire format for the DS. The length of the digest is specified in the respective RFCs defining the digest type.]
 
 ##  Example DS Record Using SHA-256 and Denial Type TBD
 
@@ -84,30 +82,26 @@ section 5.4 of [](#RFC4034).
 
 The DNSKEY record:
 
-   dskey.example.com. 86400 IN DNSKEY 256 3 5 ( AQOeiiR0GOMYkDshWoSKz9Xz
-                                                fwJr1AYtsmx3TGkJaNXVbfi/
-                                                2pHm822aJ5iI9BMzNXxeYCmZ
-                                                DRD99WYwYqUSdjMmmAphXdvx
-                                                egXd/M5+X7OrzKBaMbCVdFLU
-                                                Uh6DhweJBjEVv5f2wwjM9Xzc
-                                                nOf+EPbtG9DMBmADjFDc2w/r
-                                                ljwvFw==
-                                                ) ;  key id = 60485
+    dskey.example.com. 86400 IN DNSKEY 256 3 5 ( AQOeiiR0GOMYkDshWoSKz9Xz
+                                              fwJr1AYtsmx3TGkJaNXVbfi/
+                                              2pHm822aJ5iI9BMzNXxeYCmZ
+                                              DRD99WYwYqUSdjMmmAphXdvx
+                                              egXd/M5+X7OrzKBaMbCVdFLU
+                                              Uh6DhweJBjEVv5f2wwjM9Xzc
+                                              nOf+EPbtG9DMBmADjFDc2w/r
+                                              ljwvFw==) ;  key id = 60485
 
 The resulting DS record covering the above DNSKEY record using a
-SHA-256 digest and the Denial Type 2:
+SHA-256 digest and the Denial Type 2 (.i.e. the current NSEC3 record):
 
-   dskey.example.com. 86400 IN DS 60485 5 TBD ( 02D4B7D520E7BB5F0F67674A0C
+    dskey.example.com. 86400 IN DS 60485 5 TBD ( 02D4B7D520E7BB5F0F67674A0C
                                                 CEB1E3E0614B93C4F9E99B8383
                                                 F6A1E4469DA50A )
 
-<!-- 
 # Implementation Requirements
 
-Implementations MUST support the use of the SHA-256 algorithm in DS
-RRs.  Validator implementations SHOULD ignore DS RRs containing SHA-1
-digests if DS RRs with SHA-256 digests are present in the DS RRset.
--->
+Implementation implenting support for Denial Type in DS RRs MUST
+support all previous types too. TODO(miek): better
 
 # Deployment Considerations
 
@@ -146,11 +140,11 @@ use in DS records are as follows:
         TBD     DT-SHA-1             OPTIONAL
         TBD     DT-SHA-256           OPTIONAL
         TBD     DT-GOST R 34.11-94   OPTIONAL
-        TBD     DT_SHA-384           OPTIONAL
+        TBD     DT-SHA-384           OPTIONAL
 
       9-255    Unassigned               -
 
-This document creates a new IANA registry for Denial Typess.  This
+This document creates a new IANA registry for Denial Types.  This
 registry is named "DNSSEC DENIAL TYPES".  The initial contents of this
 registry are:
 
@@ -159,11 +153,14 @@ registry are:
         1       NSEC                     [](#RFC4034)
         2       NSEC3 w/ SHA-1           [](#RFC5155)
         3       NSEC3 w/ SHA-256            -
-        4       NSEC3 w/ GOST R 34.11-94    -
-        5       NSEC3 w/ SHA-384            -
-        6       NSEC4 w/ SHA-1           [](NSEC4-REF)
-        7       NSEC4 w/ SHA-256         [](NSEC4-REF)
-        8       NSEC4 w/ SHA-384         [](NSEC4-REF)
+        4       NSEC3 w/ SHA-384            -
+        5       NSEC4 w/ SHA-1           [](NSEC4-REF)
+        6       NSEC4 w/ SHA-256         [](NSEC4-REF)
+        7       NSEC4 w/ SHA-384         [](NSEC4-REF)
+        8       NSEC3 w/ GOST R 34.11-94    -
+        9       NSEC4 w/ GOST R 34.11-94 [](NSEC4-REF)
+
+    10-65535    Unassigned                  -
 
 
 # Security Considerations
