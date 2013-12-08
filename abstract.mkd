@@ -1,6 +1,6 @@
-This documentent defines a transition mechanism for using new hash algorithms 
-when providing hashed authenticated denial of extistence in a zone.
+This document defines a transition mechanism for using new hash algorithms 
+when providing hashed authenticated denial of existence in a zone.
 
-This document defines new hash digest types for Delegation Signer (DS) Resource
+This document defines new digest types for Delegation Signer (DS) Resource
 Records (RRs) that include the type of authenticated denial that is used in the
-child zone.
+child zone. 
