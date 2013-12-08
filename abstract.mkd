@@ -1,0 +1,3 @@
+This document defines new hash digest types for Delegation Signer (DS) Resource
+Records (RRs) that includes the type of authenticated denial that is used in the
+child zone.
