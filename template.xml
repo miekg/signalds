@@ -4,11 +4,18 @@
 <!ENTITY pandocMiddle   PUBLIC '' 'middle.xml'>
 <!ENTITY pandocBack     PUBLIC '' 'back.xml'>
 
+<!ENTITY rfc2119 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml'>
+<!ENTITY rfc3658 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.3658.xml'>
+<!ENTITY rfc4033 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4033.xml'>
+<!ENTITY rfc4034 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4034.xml'>
+<!ENTITY rfc4035 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4035.xml'>
+<!ENTITY rfc5155 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5155.xml'>
+
 ]>
 
 <rfc ipr="trust200902" category="std" docName="draft-gieben-ds-signal-00">
  <front>
-        <title abbrev="DS Denial Type Signalling">Signaling Authenticated Denial Type via Delegation Signer Records</title>
+        <title abbrev="DS Denial Type Signalling">Signaling Type of Denial via Delegation Signer Records</title>
 
         <author initials="R." surname="Gieben"
                 fullname="R. (Miek) Gieben">
@@ -36,8 +43,15 @@
 </middle>
 
 <back>
-<!--    <references title="Normative References">
+    <references title="Normative References">
+        &rfc2119;
+        &rfc3658;
+        &rfc4033;
+        &rfc4034;
+        &rfc4035;
+        &rfc5155;
     </references>
+<!--
     <references title="Informative References">
     </references>
 -->
