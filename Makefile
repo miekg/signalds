@@ -6,3 +6,8 @@ draft.xml: *.mkd
 
 draft.html: *.mkd
 	pandoc2rfc -H *.mkd
+
+.PHONY: clean
+
+clean:
+	rm -f draft.*
