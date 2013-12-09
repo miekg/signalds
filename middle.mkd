@@ -36,7 +36,7 @@ require uploading a new DS record with the new Denial Type to their parent.
 # DS Record Field Values
 
 Indicating the denial type in use at the child zone is done by
-prefixing the digest in the DS record with two octects defining
+prefixing the digest in the DS record with two octets defining
 the denial type.
 
 Denial type: 
@@ -98,9 +98,12 @@ SHA-256 digest and the Denial Type 2 (.i.e. the current NSEC3 record):
                                                 CEB1E3E0614B93C4F9E99B8383
                                                 F6A1E4469DA50A )
 
+Note that the presentation format does not change.
+
+
 # Implementation Requirements
 
-Implementation implenting support for Denial Type in DS RRs MUST
+Implementation support for Denial Type in DS RRs MUST
 support all previous types too. TODO(miek): better
 
 # Deployment Considerations
