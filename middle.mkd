@@ -16,7 +16,7 @@ new hash algorithms in NSEC3, except to resort to an algorithm rollover.
 
 This document outlines a transition mechanism to new hash algorithms that
 can be used in NSEC3. This transition mechanism can also be used to transition
-to NSEC4 (TODO:REF).
+to NSEC4 [](#I-D.gieben-nsec4).
 
 The term "denial type" used in this document indicates the type
 of authenticated denial of existence in use at a zone.
@@ -177,3 +177,4 @@ Include security consideration from RFC 4509.
 # Acknowledgements
 
 The idea for this draft comes from Mark Andrews.
+Matthijs Mekking.

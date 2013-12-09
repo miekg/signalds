@@ -2,4 +2,4 @@
 
 ## 00
 
-* start.
+* Initial release.
