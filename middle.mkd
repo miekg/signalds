@@ -157,12 +157,9 @@ registry are:
         0       Reserved
         1       NSEC
         2       NSEC3 w/ SHA-1
-        3       NSEC3 w/ SHA-256
-        4       NSEC3 w/ SHA-384
         5       NSEC4 w/ SHA-1
         6       NSEC4 w/ SHA-256
         7       NSEC4 w/ SHA-384
-        8       NSEC3 w/ GOST R 34.11-94 
         9       NSEC4 w/ GOST R 34.11-94
 
     10-65535    Unassigned
