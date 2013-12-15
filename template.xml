@@ -11,6 +11,8 @@
 <!ENTITY rfc4035 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4035.xml'>
 <!ENTITY rfc5155 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5155.xml'>
 
+<!ENTITY gieben-nsec4 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-gieben-nsec4-01.xml'>
+
 ]>
 
 <rfc ipr="trust200902" category="std" docName="draft-gieben-ds-signal-00">
@@ -67,6 +69,7 @@
         &rfc4034;
         &rfc4035;
         &rfc5155;
+        &gieben-nsec4;
     </references>
 <!--
     <references title="Informative References">

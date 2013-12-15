@@ -36,7 +36,7 @@ require uploading a new DS record with the new Denial Type to their parent.
 # DS Record Field Values
 
 Indicating the denial type in use at the child zone is done by
-prefixing the digest in the DS record with two octects defining
+prefixing the digest in the DS record with two octets defining
 the denial type.
 
 Denial type: 
@@ -100,9 +100,12 @@ SHA-256 digest and the Denial Type 2 (.i.e. the current NSEC3 record):
                                                 CEB1E3E0614B93C4F9E99B8383
                                                 F6A1E4469DA50A )
 
+Note that the presentation format does not change.
+
+
 # Implementation Requirements
 
-Implementation implenting support for Denial Type in DS RRs MUST
+Implementation support for Denial Type in DS RRs MUST
 support all previous types too. TODO(miek): better
 
 # Deployment Considerations
@@ -127,7 +130,7 @@ beyond the scope of this document.
 
 The following action for IANA are required by this document:
 
-The Digest Types to be used for supporting Denial Type information within 
+The Digest Types to be used for supporting Denial Type information within
 DS records has been assigned by IANA.
 
 At the time of this writing, the current digest types assigned for
@@ -144,7 +147,9 @@ use in DS records are as follows:
         TBD     DT-GOST R 34.11-94   OPTIONAL
         TBD     DT-SHA-384           OPTIONAL
 
-      9-255    Unassigned               -
+       9-255    Unassigned              -
+
+All future assigned Digest Types MUST assume that there is a Denial Type incorporated in the Digest.
 
 This document creates a new IANA registry for Denial Types.  This
 registry is named "DNSSEC DENIAL TYPES".  The initial contents of this
@@ -159,6 +164,8 @@ registry are:
 
      5-65535    Unassigned                  -
 
+Validators who understand the new Digest Types (that indicate Signaling
+Type of Denial via Delegation Signer Records) MUST also implement NSEC4.
 
 # Security Considerations
 
@@ -167,3 +174,4 @@ Include security consideration from RFC 4509.
 # Acknowledgements
 
 The idea for this draft comes from Mark Andrews.
+Matthijs Mekking.

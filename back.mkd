@@ -13,4 +13,4 @@ Does not work because of X.
 
 ## 00
 
-* start.
+* Initial release.
