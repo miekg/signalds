@@ -1,3 +1,14 @@
+# Other Options
+
+## Querying for NSEC3PARAM
+
+Does not work because: multiple records, extra queries.
+
+## Doing Y
+
+Does not work because of X.
+
+
 # Changelog
 
 ## 00

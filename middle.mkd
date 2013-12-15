@@ -16,7 +16,7 @@ new hash algorithms in NSEC3, except to resort to an algorithm rollover.
 
 This document outlines a transition mechanism to new hash algorithms that
 can be used in NSEC3. This transition mechanism can also be used to transition
-to NSEC4 (TODO:REF).
+to new methods for providing authenticated denial of existence.
 
 The term "denial type" used in this document indicates the type
 of authenticated denial of existence in use at a zone.
@@ -55,6 +55,8 @@ Digest:
 
    The Key Tag field and Algorithm fields remain unchanged by this
    document and are specified in the [](#RFC4034) specification.
+
+This document does not change the presentation format of DS records.
 
 ##  DS Record with Denial Type Wire Format
 
@@ -154,13 +156,8 @@ registry are:
         2       NSEC3 w/ SHA-1           [](#RFC5155)
         3       NSEC3 w/ SHA-256            -
         4       NSEC3 w/ SHA-384            -
-        5       NSEC4 w/ SHA-1           [](NSEC4-REF)
-        6       NSEC4 w/ SHA-256         [](NSEC4-REF)
-        7       NSEC4 w/ SHA-384         [](NSEC4-REF)
-        8       NSEC3 w/ GOST R 34.11-94    -
-        9       NSEC4 w/ GOST R 34.11-94 [](NSEC4-REF)
 
-    10-65535    Unassigned                  -
+     5-65535    Unassigned                  -
 
 
 # Security Considerations

@@ -28,6 +28,23 @@
             </address>
         </author>
 
+        <author initials='W.' surname='Mekking' 
+                fullname='W. (Matthijs) Mekking'>
+            <address>
+                <phone/>
+                <email>matthijs@nlnetlabs.nl</email>
+                <uri/>
+            </address>
+        </author>
+        <author initials='J.' surname='Jansen' 
+                fullname=' Jelte Jansen'>
+            <address>
+                <phone/>
+                <email>jelte.jansen@sidnlabs.nl</email>
+                <uri/>
+            </address>
+        </author>
+
         <date month="December" year="2013"/>
 
         <area>Network</area>
