@@ -32,6 +32,7 @@
 
         <author initials='W.' surname='Mekking' 
                 fullname='W. (Matthijs) Mekking'>
+            <organization>NLnet Labs</organization>
             <address>
                 <phone/>
                 <email>matthijs@nlnetlabs.nl</email>
@@ -40,6 +41,7 @@
         </author>
         <author initials='J.' surname='Jansen' 
                 fullname=' Jelte Jansen'>
+            <organization>SIDN Labs</organization>
             <address>
                 <phone/>
                 <email>jelte.jansen@sidnlabs.nl</email>
