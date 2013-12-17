@@ -5,7 +5,7 @@ is published in parent zones to distribute a cryptographic digest of one key in 
 DNSKEY RRset.  
 
 When NSEC3 [](#RFC5155) was deployed the known algorithms were aliased to indicate
-to resolvers that the zone was using NSEC3. Resolvers that did not know
+to resolvers that the zone could be using NSEC3. Resolvers that did not know
 about these new identifiers would treat the zone as insecure 
 (Section 5.2 of [](#RFC4035) and Section 2 of [](#RFC5155)). This aliasing is
 called an algorithm rollover and is expensive with respect to the amount of
