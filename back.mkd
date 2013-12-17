@@ -2,11 +2,11 @@
 
 ## Querying for NSEC3PARAM
 
-A different approach could have been to use the NSEC3PARAM record at 
-the zone apex to determine the hash algorithm, as well as other 
-parameters. This would however result in mandatory extra queries 
-during validation, and it would be a change in the resolution 
-process, as the NSEC3PARAM is currently not used by validating 
+A different approach could have been to use the NSEC3PARAM record at
+the zone apex to determine the hash algorithm, as well as other
+parameters. This would however result in mandatory extra queries
+during validation, and it would be a change in the resolution
+process, as the NSEC3PARAM is currently not used by validating
 resolvers.
 
 ## Doing Y
