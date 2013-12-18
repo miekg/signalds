@@ -154,16 +154,13 @@ This document creates a new IANA registry for Denial Types.  This
 registry is named "DNSSEC DENIAL TYPES".  The initial contents of this
 registry are:
 
-      VALUE     Denial Type              Reference
-        0       Reserved                 This document
-        1       NSEC                     [](#RFC4034)
-        2       NSEC3 w/ SHA-1           [](#RFC5155)
-        3       NSEC3 w/ SHA-256            -
-        4       NSEC3 w/ SHA-384            -
-     5-65535    Unassigned                  -
-
-Validators who understand the new Digest Types (that indicate Signaling
-Type of Denial via Delegation Signer Records) MUST also implement NSEC4.
+      VALUE     Denial Type
+        0       Reserved
+        1       NSEC
+        2       NSEC3 w/ SHA-1
+        3       NSEC3 w/ SHA-256
+        4       NSEC3 w/ SHA-384
+     5-65535    Unassigned
 
 # Security Considerations
 
