@@ -28,13 +28,17 @@ Denial Type:
 :   Indicates the type of authenticated denial of existence in use at a zone;
 
 Denial Type Algoritm Code:
-:   An algorithm code used by the DS record that indicates the Denial Type.
+:   An extra value encoded in the DS' digest that indicates the Denial Type.
 
 In this document, the key words "MUST", "MUST NOT", "REQUIRED",
 "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY",
 and "OPTIONAL" are to be interpreted as described in [](#RFC2119).
 
 # Implementing Denial Type Support in DS Records
+
+This document specifies that the Denial Type Algorithm Codes:
+TBD, TBD, ..., TBD have been assigned for use within DS records.
+
 
 This document specifies that the Denial Type Algorithm Codes:
 TBD, TBD, ..., TBD have been assigned for use within DS records.

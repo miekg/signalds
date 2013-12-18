@@ -1,4 +1,5 @@
 This document defines a transition mechanism for using new hash algorithms 
 when providing hashed authenticated denial of existence in a zone. The transition mechanism
-defines new digest types for Delegation Signer (DS) Resource
-Records (RRs) that include the type of authenticated denial used in the zone.
+defines a new digest type for Delegation Signer (DS) Resource
+Records (RRs) that points to extra data embedded in the digest to 
+include the type of authenticated denial used in the zone.
