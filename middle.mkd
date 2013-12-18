@@ -33,25 +33,25 @@ and "OPTIONAL" are to be interpreted as described in [](#RFC2119).
 
 Indicating the type of denial of existence in use at the child zone is done by
 prefixing the digest in the DS record with two octets defining
-the Denial Type.
+the Denial Type:
 
 Denial Type:
-:   An extra 16 bit value (see [](#iana-considerations) encoded in the DS' digest that indicates the denial
-    of existence in use in the (child) zone.
+:   An extra 16 bit integer value (see [](#iana-considerations)) encoded in the DS' digest 
+    that indicates the denial of existence in use in the (child) zone.
 
 Digest:
 :   The digest value is calculated by using the following
     formula ("|" denotes concatenation, HASH denotes that
     hash algorithm in use).
-
-        digest = Denial Type | HASH(DNSKEY owner name | DNSKEY RDATA)
-
+     
+            digest = Denial Type | HASH(DNSKEY owner name | DNSKEY RDATA)
+     
     where DNSKEY RDATA is defined by [](#RFC4034) as:
-
-        DNSKEY RDATA = Flags | Protocol | Algorithm | Public Key
-
-   The Key Tag field and Algorithm fields remain unchanged by this
-   document and are specified in the [](#RFC4034) specification.
+     
+            DNSKEY RDATA = Flags | Protocol | Algorithm | Public Key
+     
+    The Key Tag field and Algorithm fields remain unchanged by this
+    document and are specified in the [](#RFC4034) specification.
 
 This document does *not* change the presentation format of DS records.
 
@@ -62,7 +62,7 @@ to SHA-256 [](#RFC4509) with Denial Type. The 32 octet digest produced
 by SHA-256 is prefixed with the 2 octet Denial Type resulting in 34 octets.
 
 Zone operators should be aware that changes to their zones' denial of existence
-mechanism require uploading a new DS record with the changed Denial Type Algorithm Code
+mechanism requires uploading a new DS record with the changed Denial Type Algorithm Code
 to their parent.
 
 ##  DS Record with Denial Type Wire Format
@@ -80,6 +80,8 @@ as follows:
      /                                                               /
      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-|
 ^[fig:wire::The on-the-wire format for the DS. The length of the digest is specified in the respective RFCs defining the digest type.]
+
+The Denial Type is a 16 bit unsigned integer value stored in network order.
 
 ##  Example DS Record Using SHA-256 and Denial Type TBD
 
@@ -116,8 +118,9 @@ DS RR exists in a zone's DS RRset with a supported digest type, then
 the validator has no supported authentication path leading from the
 parent to the child.  The resolver should treat this case as it would
 the case of an authenticated NSEC/NSEC3 RRset proving that no DS RRset
-exists, as described in [](#RFC4035), Section 5.2 and [](#RFC5155), Section X.X.
+exists, as described in [](#RFC4035), Section 5.2 and [](#RFC5155), Section 2.
 
+<!-- FIXME(miek): include this? -->
 Because zone administrators cannot control the deployment speed of
 support these new digest types in validators that may be referencing any of
 their zones, zone operators should consider deploying both older and
@@ -127,7 +130,7 @@ which DS records are being generated.  Whether to make use of both
 digest types and for how long is a policy decision that extends
 beyond the scope of this document.
 
-When there are multiple DS records with different Denial Types the FIXME(miek).
+<!-- When there are multiple DS records with different Denial Types the FIXME(miek). -->
 
 # IANA Considerations
 
@@ -149,6 +152,7 @@ use in DS records are as follows:
        TDB-255  Unassigned              -
 
 All future assigned Digest Types MUST assume that there is a Denial Type incorporated in the Digest.
+<!-- FIXME(miek): nicer prefix than DT- -->
 
 This document creates a new IANA registry for Denial Types.  This
 registry is named "DNSSEC DENIAL TYPES".  The initial contents of this
@@ -162,11 +166,12 @@ registry are:
         4       NSEC3 w/ SHA-384
      5-65535    Unassigned
 
+<!-- FIXME(miek): define the other NSEC3 ones -->
+
 # Security Considerations
 
-Include security consideration from RFC 4509.
+Include security consideration from RFC 4509?
 
 # Acknowledgements
 
 The idea for this draft comes from Mark Andrews.
-Matthijs Mekking.
