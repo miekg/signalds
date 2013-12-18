@@ -22,46 +22,28 @@ can be used in NSEC3. It can also be used to transition
 to new methods for providing authenticated denial of existence. This transition
 method is best described as a hack.
 
-The following terms are used in this document:
-
-Denial Type:
-:   Indicates the type of authenticated denial of existence in use at a zone;
-
-Denial Type Algoritm Code:
-:   An extra value encoded in the DS' digest that indicates the Denial Type.
+The following term is used in this document:
 
 In this document, the key words "MUST", "MUST NOT", "REQUIRED",
 "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY",
 and "OPTIONAL" are to be interpreted as described in [](#RFC2119).
 
-# Implementing Denial Type Support in DS Records
-
-This document specifies that the Denial Type Algorithm Codes:
-TBD, TBD, ..., TBD have been assigned for use within DS records.
-
-
-This document specifies that the Denial Type Algorithm Codes:
-TBD, TBD, ..., TBD have been assigned for use within DS records.
-
-Zone operators should be aware that changes to their zones' Denial Type
-require uploading a new DS record with the changed Denial Type Algorithm Code
-to their parent.
-
 # DS Record Field Values
 
 Indicating the Denial Type in use at the child zone is done by
-prefixing the *digest* in the DS record with two octets defining
-the Denial Type Algorithm.
+prefixing the digest in the DS record with two octets defining
+the Denial Type.
 
-Denial Type Algorithm:
-:   A 16 bit value, see [](#iana-considerations) for the defined values.
+Denial Type:
+:   An extra 2 byte value (see [](#iana-considerations) encoded in the DS' digest that indicates the denial
+    of existence in use in the (child) zone.
 
 Digest:
 :   The digest value is calculated by using the following
     formula ("|" denotes concatenation, HASH denotes that
     hash algorithm in use).
 
-        digest = Denial Type Algo | HASH(DNSKEY owner name | DNSKEY RDATA)
+        digest = Denial Type | HASH(DNSKEY owner name | DNSKEY RDATA)
 
     where DNSKEY RDATA is defined by [](#RFC4034) as:
 
@@ -71,6 +53,16 @@ Digest:
    document and are specified in the [](#RFC4034) specification.
 
 This document does *not* change the presentation format of DS records.
+
+# Implementing Denial Type Support in DS Records
+
+This document specifies that the digest type code TBD has been assigned
+to SHA-256 [](#RFC4509) with Denial Type. The 32 byte digest produced
+by SHA-256 is prefixed with the 2 byte Denial Type resulting in 34 bytes.
+
+Zone operators should be aware that changes to their zones' denial of existence
+mechanism require uploading a new DS record with the changed Denial Type Algorithm Code
+to their parent.
 
 ##  DS Record with Denial Type Wire Format
 
@@ -108,7 +100,7 @@ The DNSKEY record:
                                               ljwvFw==) ;  key id = 60485
 
 The resulting DS record covering the above DNSKEY record using a
-SHA-256 digest and the Denial Type 2 (.i.e. the current NSEC3 record):
+SHA-256 digest and the Denial Type 2 (i.e. the current NSEC3 record):
 
     dskey.example.com. 86400 IN DS 60485 5 TBD ( 02D4B7D520E7BB5F0F67674A0C
                                                 CEB1E3E0614B93C4F9E99B8383
@@ -116,15 +108,9 @@ SHA-256 digest and the Denial Type 2 (.i.e. the current NSEC3 record):
 
 Note that the presentation format does not change.
 
-
-# Implementation Requirements
-
-Implementation support for Denial Type in DS RRs MUST
-support all previous types too. TODO(miek): better
-
 # Deployment Considerations
 
-If a validator does not support the TBD, TBD, .. TBD digest types and no other
+If a validator does not support the TBD digest type and no other
 DS RR exists in a zone's DS RRset with a supported digest type, then
 the validator has no supported authentication path leading from the
 parent to the child.  The resolver should treat this case as it would
@@ -139,6 +125,8 @@ This should be done for every DNSKEY for
 which DS records are being generated.  Whether to make use of both
 digest types and for how long is a policy decision that extends
 beyond the scope of this document.
+
+When there are multiple DS records with different Denial Types the FIXME(miek).
 
 # IANA Considerations
 
@@ -156,12 +144,8 @@ use in DS records are as follows:
         2       SHA-256              MANDATORY
         3       GOST R 34.11-94      OPTIONAL
         4       SHA-384              OPTIONAL
-        TBD     DT-SHA-1             OPTIONAL
         TBD     DT-SHA-256           OPTIONAL
-        TBD     DT-GOST R 34.11-94   OPTIONAL
-        TBD     DT-SHA-384           OPTIONAL
-
-       9-255    Unassigned              -
+       TDB-255  Unassigned              -
 
 All future assigned Digest Types MUST assume that there is a Denial Type incorporated in the Digest.
 
@@ -175,7 +159,6 @@ registry are:
         2       NSEC3 w/ SHA-1           [](#RFC5155)
         3       NSEC3 w/ SHA-256            -
         4       NSEC3 w/ SHA-384            -
-
      5-65535    Unassigned                  -
 
 Validators who understand the new Digest Types (that indicate Signaling

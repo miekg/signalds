@@ -9,6 +9,7 @@
 <!ENTITY rfc4033 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4033.xml'>
 <!ENTITY rfc4034 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4034.xml'>
 <!ENTITY rfc4035 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4035.xml'>
+<!ENTITY rfc4509 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4509.xml'>
 <!ENTITY rfc5155 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5155.xml'>
 
 <!ENTITY gieben-nsec4 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-gieben-nsec4-01.xml'>
@@ -70,6 +71,7 @@
         &rfc4033;
         &rfc4034;
         &rfc4035;
+        &rfc4509;
         &rfc5155;
         &gieben-nsec4;
     </references>
