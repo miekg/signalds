@@ -1,6 +1,6 @@
 # Introduction
 
-The DS Resource Record [](#RFC3658) 
+The DS Resource Record [](#RFC3658)
 is published in parent zones to distribute a cryptographic digest of one key in a child's
 DNSKEY RRset. With the DS published, a zone sets expectations for a validator. In
 particular a digest of the DNSKEY, the algorithm used for signature of the
@@ -9,21 +9,26 @@ DNSKEY and the type of authenticated denial of existence used.
 When NSEC3 [](#RFC5155) was deployed the known algorithms were aliased to indicate
 to validators that the zone could be using NSEC3, as opposed to NSEC.
 Resolvers that did not know
-about these new algorithm identifiers would treat the zone as insecure 
+about these new algorithm identifiers would treat the zone as insecure
 (Section 5.2 of [](#RFC4035) and Section 2 of [](#RFC5155)). This aliasing is
 called an algorithm rollover and is expensive with respect to the amount of
-available algorithms, which is limited to 255. 
+available algorithms, which is limited to 255.
 
 Section 12.1.3. of [](#RFC5155) does not specify a transition mechanism to use
 new hash algorithms in NSEC3, except to resort to an algorithm rollover.
 
 This document outlines a transition mechanism to new hash algorithms that
-can be used in NSEC3. IT can also be used to transition
+can be used in NSEC3. It can also be used to transition
 to new methods for providing authenticated denial of existence. This transition
 method is best described as a hack.
 
-The term "denial type" used in this document indicates the type
-of authenticated denial of existence in use at a zone.
+The following terms are used in this document:
+
+Denial Type:
+:   Indicates the type of authenticated denial of existence in use at a zone;
+
+Denial Type Algoritm Code:
+:   An algorithm code used by the DS record that indicates the Denial Type.
 
 In this document, the key words "MUST", "MUST NOT", "REQUIRED",
 "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY",
@@ -31,27 +36,28 @@ and "OPTIONAL" are to be interpreted as described in [](#RFC2119).
 
 # Implementing Denial Type Support in DS Records
 
-This document specifies that the denial type codes TBD, TBD, ..., TBD 
-have been assigned for use within DS records. 
+This document specifies that the Denial Type Algorithm Codes:
+TBD, TBD, ..., TBD have been assigned for use within DS records.
 
-Zone operators should be aware that changes to their zones' denial type
-require uploading a new DS record with the denial type code to their parent.
+Zone operators should be aware that changes to their zones' Denial Type
+require uploading a new DS record with the changed Denial Type Algorithm Code
+to their parent.
 
 # DS Record Field Values
 
-Indicating the denial type in use at the child zone is done by
-prefixing the digest in the DS record with two octets defining
-the denial type.
+Indicating the Denial Type in use at the child zone is done by
+prefixing the *digest* in the DS record with two octets defining
+the Denial Type Algorithm.
 
-Denial type: 
+Denial Type Algorithm:
 :   A 16 bit value, see [](#iana-considerations) for the defined values.
 
-Digest: 
+Digest:
 :   The digest value is calculated by using the following
-    formula ("|" denotes concatenation, HASH denotes that 
+    formula ("|" denotes concatenation, HASH denotes that
     hash algorithm in use).
 
-        digest = denial type | HASH(DNSKEY owner name | DNSKEY RDATA)
+        digest = Denial Type Algo | HASH(DNSKEY owner name | DNSKEY RDATA)
 
     where DNSKEY RDATA is defined by [](#RFC4034) as:
 
@@ -60,7 +66,7 @@ Digest:
    The Key Tag field and Algorithm fields remain unchanged by this
    document and are specified in the [](#RFC4034) specification.
 
-This document does not change the presentation format of DS records.
+This document does *not* change the presentation format of DS records.
 
 ##  DS Record with Denial Type Wire Format
 
