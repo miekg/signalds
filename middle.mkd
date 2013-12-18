@@ -1,5 +1,8 @@
 # Introduction
 
+<?rfc toc="yes"?>
+<?rfc tocompact="no"?>
+
 The DS Resource Record [](#RFC3658)
 is published in parent zones to distribute a cryptographic digest of one key in a child's
 DNSKEY RRset. With the DS published, a zone sets expectations for a validator. In
@@ -21,8 +24,6 @@ This document outlines a transition mechanism to new hash algorithms that
 can be used in NSEC3. It can also be used to transition
 to new methods for providing authenticated denial of existence. This transition
 method is best described as a hack.
-
-The following term is used in this document:
 
 In this document, the key words "MUST", "MUST NOT", "REQUIRED",
 "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY",
