@@ -1,8 +1,10 @@
 # Introduction
 
-The DNSSEC [](#RFC4033) [](#RFC4033) [](#RFC4035) DS Resource Record [](#RFC3658) 
+The DS Resource Record [](#RFC3658) 
 is published in parent zones to distribute a cryptographic digest of one key in a child's
-DNSKEY RRset.  
+DNSKEY RRset. With the DS published, a zone sets expectations for a validator. In
+particular a digest of the, the algorithm used for signature on the DNSKEY and
+the type of authenticated denial of existence used.
 
 When NSEC3 [](#RFC5155) was deployed the known algorithms were aliased to indicate
 to resolvers that the zone could be using NSEC3. Resolvers that did not know
