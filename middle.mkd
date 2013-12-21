@@ -120,17 +120,9 @@ parent to the child.  The resolver should treat this case as it would
 the case of an authenticated NSEC/NSEC3 RRset proving that no DS RRset
 exists, as described in [](#RFC4035), Section 5.2 and [](#RFC5155), Section 2.
 
-<!-- FIXME(miek): include this? -->
-Because zone administrators cannot control the deployment speed of
-support these new digest types in validators that may be referencing any of
-their zones, zone operators should consider deploying both older and
-supported digest type based DS records.
-This should be done for every DNSKEY for
-which DS records are being generated.  Whether to make use of both
-digest types and for how long is a policy decision that extends
-beyond the scope of this document.
-
-<!-- When there are multiple DS records with different Denial Types the FIXME(miek). -->
+If multiple DS records exist with more than one denial type a resolver, should pick
+the highest supported one and continue. If the validator encounters authenticated denial of existence
+records it does not understand it should treat the answer as bogus ([](#RFC5155), Section 8.1).
 
 # IANA Considerations
 
