@@ -67,8 +67,7 @@ to their parent.
 
 ##  DS Record with Denial Type Wire Format
 
-The resulting on-the-wire format for the resulting DS record will be
-as follows:
+The resulting on-the-wire format for the resulting DS record will be as follows:
 
                           1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3
       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -108,8 +107,6 @@ SHA-256 digest and the Denial Type 2 (i.e. the current NSEC3 record):
     dskey.example.com. 86400 IN DS 60485 5 TBD ( 02D4B7D520E7BB5F0F67674A0C
                                                 CEB1E3E0614B93C4F9E99B8383
                                                 F6A1E4469DA50A )
-
-Note that the presentation format does not change.
 
 # Deployment Considerations
 
