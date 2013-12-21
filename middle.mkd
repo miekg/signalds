@@ -22,8 +22,7 @@ This document outlines a transition mechanism to new hash algorithms that
 can be used in NSEC3. It can also be used to transition
 to new methods for providing authenticated denial of existence. 
 
-> This transition
-> method is best described as a hack.
+> This transition method is best described as a hack.
 
 In this document, the key words "MUST", "MUST NOT", "REQUIRED",
 "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY",
