@@ -144,7 +144,7 @@ use in DS records are as follows:
        TDB-255  Unassigned              -
 
 All future assigned Digest Types MUST assume that there is a Denial Type incorporated in the Digest.
-<!-- FIXME(miek): nicer prefix than DT- -->
+ <!-- FIXME(miek): nicer prefix than DT-? -->
 
 This document creates a new IANA registry for Denial Types.  This
 registry is named "DNSSEC DENIAL TYPES".  The initial contents of this
@@ -158,7 +158,7 @@ registry are:
         4       NSEC3 w/ SHA-384
      5-65535    Unassigned
 
-<!-- FIXME(miek): define the other NSEC3 ones -->
+ <!-- FIXME(miek): define the other NSEC3 ones? -->
 
 # Security Considerations
 

@@ -11,7 +11,7 @@ resolvers.
 
 ## Doing Y
 
-FIXME(miek)
+ <!-- FIXME(miek) -->
 Does not work because of X.
 
 # Changelog
