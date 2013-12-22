@@ -9,6 +9,12 @@ during validation, and it would be a change in the resolution
 process, as the NSEC3PARAM is currently not used by validating
 resolvers.
 
+## Algorithm Aliasing
+
+This is a good, or maybe the best way to deal with this transition, but 
+because the algorithm namespace is only 8 bits and each aliases need to
+alias all previous aliases... <!-- FIXME(miek) -->
+
 ## Doing Y
 
  <!-- FIXME(miek) -->
